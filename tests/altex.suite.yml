@@ -1,0 +1,8 @@
+actor: AltexTester
+modules:
+    enabled:
+        - WebDriver:
+              url: https://www.altex.ro/
+              browser: chrome
+              window_size: 1350x800
+        - \Helper\Acceptance
