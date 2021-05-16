@@ -5,19 +5,22 @@ class FooterCest
     public function _before(AltexTester $I)
     {
         $I->amOnPage('/');
+        //$I->click('.Promo2-headerLink');//click pe inapoi in site - versiunea Altex Blackfriday de iarna
     }
 
     // tests
     public function testPricePerformanceRatio(AltexTester $I)
     {
+        $I->wait(3);//wait-ul este pentru incarcarea paginii originale - versiunea Altex Blackfriday de iarna
         $I->seeElement('.Footer .bg-gray-lighter');
         $I->see('Cel mai bun raport calitate-pret.', '.Footer .bg-gray-lighter strong');
-        $I->see('Conform sondajului Best Buy Award 2019/2020 efectuat de organizatia iCertias.' , '.Footer .bg-gray-lighter p:nth-child(2)');
-        $I->seeNumberOfElements('.Footer .bg-gray-lighter a' , 2); $I->amOnPage('/');
+        $I->seeElement('.Footer .bg-gray-lighter p:nth-child(2)');
+        $I->seeNumberOfElements('.Footer .bg-gray-lighter a' , 2);
     }
 
     public function testCompanySection(AltexTester $I)
     {
+        $I->wait(3);//wait-ul este pentru incarcarea paginii originale - versiunea Altex Blackfriday de iarna
         $I->see('Companie' , '.lg-u-size-3of12:nth-child(1)');
         $I->seeLink('Despre noi', 'https://altex.ro/despre-noi/pag/');
         $I->seeLink('Cariere', 'https://altex.ro/cariere/');
@@ -30,6 +33,7 @@ class FooterCest
 
     public function testCustomeSuportSection(AltexTester $I)
     {
+        $I->wait(3);//wait-ul este pentru incarcarea paginii originale - versiunea Altex Blackfriday de iarna
         $I->see('Suport clienti' , '.lg-u-size-3of12:nth-child(2)');
         $I->seeLink('Articole suport', 'https://altex.ro/suport-clienti/');
         $I->seeLink('Contact', 'https://altex.ro/contact/');
@@ -39,6 +43,7 @@ class FooterCest
 
     public function testLegalInformationSection(AltexTester $I)
     {
+        $I->wait(3);//wait-ul este pentru incarcarea paginii originale - versiunea Altex Blackfriday de iarna
         $I->see('Informatii legale' , '.lg-u-size-3of12:nth-child(3)');
         $I->seeLink('Termeni si conditii', 'https://altex.ro/termeni-conditii/pag/');
         $I->seeLink('Politica cookie-uri', 'https://altex.ro/politica-utilizare-cookie/pag/');
@@ -50,6 +55,7 @@ class FooterCest
 
     public function testCommunicationSection(AltexTester $I)
     {
+        $I->wait(3);//wait-ul este pentru incarcarea paginii originale - versiunea Altex Blackfriday de iarna
         $I->see('Comunicare', '.lg-u-size-3of12:nth-child(4)');
         $I->seeLink('Abonare newsletter', 'https://altex.ro/newsletter/abonare/?referrer=footer');
         $I->seeElement('.SocialV2-facebook', ['href' => 'https://www.facebook.com/AltexRomania/','target' =>'_blank']);
