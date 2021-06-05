@@ -64,21 +64,20 @@ class ProductPageCest
         $I->seeElement('.my-12 + div .mt-2');
     }
 
-   // public function testSeenRecently(AltexTester $I)
-   // {
+   public function testSeenRecently(AltexTester $I)
+   {
+       $I->clickWithLeftButton('.my-12 + div .mx-auto.mb-3');
+       $I->wait(3);
+       $I->moveBack();
+       $I->wait(2);
 
-       // $I->clickWithLeftButton('.my-12 + div .mx-auto.mb-3');
-        //$I->wait(3);
-       // $I->amOnUrl('https://altex.ro/sapun-dove-cream-oil-100g/cpd/CRM9167012/');
-     //   $I->wait(2);
+       $I->scrollTo('.my-12 + div + div');
 
-      //  $I->scrollTo('.my-12 + div + div');
+       $I->seeElement('.my-12 + div + div  h3');
+       $I->seeElement('.my-12 + div + div .mb-2');
+       $I->seeElement('.my-12 + div + div .mb-3');
+       $I->seeElement('.my-12 + div + div h2');
 
-       // $I->seeElement('.my-12 + div + div h3');
-       // $I->seeElement('.my-12 + div + div .mb-2');
-      //  $I->seeElement('.my-12 + div + div .mb-3');
-       // $I->seeElement('.my-12 + div + div h2');
-
-   // }
+   }
 }
 
