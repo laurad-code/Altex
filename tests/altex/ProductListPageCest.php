@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use Facebook\WebDriver\WebDriverElement;
 
 class ProductListPageCest
 {
@@ -59,29 +61,65 @@ class ProductListPageCest
         $I->see('Pagina','.u-display-iblock');
     }
 
-    public function testTheFunctionalityOfSortingTab(AltexTester $I)
+    public function testTheFunctionalityOfFirstSortingTab(AltexTester $I)
     {
         $bestSoldFirstProductPrice = $I->grabTextFrom('.Products-item:first-child span.Price-int');
 
         $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Pret crescator'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice,'.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
         $I->seeInCurrentUrl('asc');
 
         $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Pret descrescator'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice,'.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
         $I->seeInCurrentUrl('desc');
 
         $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Nume'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice,'.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
         $I->seeInCurrentUrl('/name/');
 
         $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Cel mai mare discount'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice,'.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
         $I->seeInCurrentUrl('/best_deal/');
+    }
+
+    public function testTheFunctionalityOfSecondSortingTab(AltexTester $I)
+    {
+
+        $I->selectOption('.u-space-mr-20:nth-child(2) .js-trigger-catalog-toolbar-apply-filters',array('text'=>'Lista'));
+        $I->seeOptionIsSelected('.u-space-mr-20:nth-child(2) .js-trigger-catalog-toolbar-apply-filters','Lista');
+        $I->waitForElementVisible('main.lg-u-space-pb-20 div.u-clearfix .Products-item .Product-list-center');
+    }
+
+    public function testTheFunctionalityOfThirdSortingTab(AltexTester $I)
+    {
+
+        $I->selectOption('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters',array('text'=>'24'));
+        $I->seeOptionIsSelected('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters','24');
+        $I->seeNumberOfElements('.Product','24');
+
+        $I->selectOption('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters',array('text'=>'36'));
+        $I->wait(2);
+        $I->seeOptionIsSelected('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters','36');
+        $I->seeNumberOfElements('.Product','36');
+
+        $I->selectOption('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters',array('text'=>'48'));
+        $I->seeOptionIsSelected('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters','48');
+        $I->seeNumberOfElements('.Product','48');
+    }
+
+    public function testPageSortingTab(AltexTester $I)
+    {
+        $bestSoldFirstProductPrice = $I->grabTextFrom('.Products-item:first-child span.Price-int');
+
+        $I->clickWithLeftButton('.Toolbar-next');
+        $I->wait(2);
+        $I->dontSee($bestSoldFirstProductPrice,'.Products-item:first-child span.Price-int');
+//        $I->seeOptionIsSelected('.u-display-iblock.Toolbar-pager:first-of-type .js-trigger-catalog-toolbar-apply-filters','2 / 18');
+
 
     }
 
