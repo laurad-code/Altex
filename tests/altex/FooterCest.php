@@ -67,7 +67,9 @@ class FooterCest
         $I->seeElement('.float-left.mr-2.text-gray-1700:nth-of-type(3)', ['href' => 'https://ro.linkedin.com/company/altex-romania','target' =>'_blank']);
         $I->seeElement('.float-left.text-gray-1700:nth-of-type(4)', ['href' => 'https://www.youtube.com/user/AltexRomania','target' =>'_blank']);
         $I->seeLink('Abonare newsletter', 'https://altex.ro/newsletter/abonare/?referrer=footer');
-        $I->see()
+        $I->see('Cel mai mic pret din Romania! Daca gasesti in alta parte mai ieftin primesti de doua ori diferenta.
+','.my-5 .text-white.text-xs');
+        $I->see('S.C. ALTEX ROMANIA S.R.L. este inregistrata cu numarul 600 / 2006 in registrul de evidenta a prelucrarilor de date cu caracter personal','.mt-5 p');
     }
 }
 
