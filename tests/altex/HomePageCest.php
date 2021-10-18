@@ -98,8 +98,18 @@ class HomePageCest
         $I->wait(2);
         $I->scrollTo('#oferte');
         $I->seeElement('#oferte .cursor-pointer:nth-of-type(1)');
-        $I->clickWithLeftButton('#oferte .cursor-pointer:nth-of-type(2)');
-        $I->seeElement('#oferte .cursor-pointer:nth-of-type(2) .Products-item:nth-of-type(1)');
+        $I->seeElement('#oferte .cursor-pointer:nth-of-type(2)');
+        $I->seeElement('#oferte .cursor-pointer:nth-of-type(3)');
+        $I->seeElement('#oferte .cursor-pointer:nth-of-type(4)');
+        $I->seeElement('#oferte .cursor-pointer:nth-of-type(5)');
+        $I->seeElement('.hidden #tabpanel_0 .Products-item:nth-child(1)');
+        $I->seeElement('.hidden #tabpanel_0 .Products-item:nth-child(2)');
+        $I->seeElement('.hidden #tabpanel_0 .Products-item:nth-child(3)');
+        $I->seeElement('.hidden #tabpanel_0 .Products-item:nth-child(4)');
+        $I->seeElement('.hidden #tabpanel_0 .Products-item:nth-child(5)');
+
+
+
     }
 //    //promotii
 //
