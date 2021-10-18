@@ -10,78 +10,118 @@ class HomePageCest
 
     // tests
 
-    public function mainMenuTest(AltexTester $I)
+    public function testingMainMenusCarouselElements(AltexTester $I)
+    {
+        $I->seeElement('.slick-list');
+        $I->seeElement('.slick-next');
+        $I->seeElement('.slick-prev');
+        $I->seeElement('.slick-dots');
+
+    }
+
+    public function testingMainMenusElementsPresence(AltexTester $I)
     {
         //$I->wait(3);//wait-ul este pentru incarcarea paginii originale - versiunea Altex Blackfriday de iarna
-        $I->seeElement('.HomeSlider-carousel.owl-theme.owl-carousel.owl-loaded.owl-drag');
-        $I->seeElement('.cms-home .MainMenu-trigger--products, .MainMenu-item.is-active .MainMenu-trigger');
-        $I->seeLink('Telefoane, Tablete', 'https://altex.ro/telefoane-tablete/cpl/');
-        $I->seeLink('Laptop, Desktop, IT, Birotica', 'https://altex.ro/laptop-desktop-it/cpl/');
-        $I->seeLink('Gaming, Jocuri', 'https://altex.ro/gaming-jocuri/cpl/');
-        $I->seeLink('TV, Audio-Video, Foto', 'https://altex.ro/tv-audio-video-foto/cpl/');
-        $I->seeLink('Electrocasnice mari', 'https://altex.ro/electrocasnice-mari-clima/cpl/');
-        $I->seeLink('Electrocasnice mici, Vesela', 'https://altex.ro/electrocasnice-mici-vesela/cpl/');
-        $I->seeLink('Climatizare, Incalzire locuinta', 'https://altex.ro/aer-conditionat-climatizare/cpl/');
-        $I->seeLink('Curatenie, Intretinere casa', 'https://altex.ro/curatenie-intretinere-casa/cpl/');
-        $I->seeLink('Bauturi, Cafea', 'https://altex.ro/apa-espresso-cafea-suc/cpl/');
-        $I->seeLink('Cosmetice, Ingrijire personala', 'https://altex.ro/cosmetice-ingrijire-personala/cpl/');
-        $I->seeLink('Copii, LEGO, Rechizite', 'https://altex.ro/bebelusi-copii-jucarii/cpl/');
-        $I->seeLink('Casa, Sanitare, Bricolaj', 'https://altex.ro/casa-iluminat-bricolaj/cpl/');
-        $I->seeLink('Anvelope, Electronica auto', 'https://altex.ro/auto-moto-anvelope/cpl/');
-        $I->seeLink('Trotinete, Biciclete, Sport', 'https://altex.ro/trotinete-biciclete-sport/cpl/');
+        $I->seeElement('.MainMenu-item:nth-of-type(1)');
+        $I->seeElement('.MainMenu-item:nth-of-type(2)');
+        $I->seeLink('Promotii','https://altex.ro/promo/');
+        $I->seeElement('.MainMenu-item:nth-of-type(3)');
+        $I->seeLink('Branduri','https://altex.ro/branduri/');
+        $I->clickWithLeftButton('.MainMenu-item:nth-of-type(4)');
+        $I->seeElement('.MainMenu-item:nth-of-type(4) .MainMenu-submenu');
+        $I->seeLink('Rate online Credex','https://altex.ro/solutii-finantare/credit-online/');
+        $I->seeLink('Credit in magazin','https://altex.ro/solutii-finantare/credit-consum-traditional/');
+        $I->seeLink('Carduri de credit','https://altex.ro/solutii-finantare/sisteme-rate-valabile-pentru-posesorii-cardurilor-credit/');
+        $I->seeLink('Aplicatia mobila Credex','https://altex.ro/credex-mobil-app/pag/');
+        $I->seeElement('.MainMenu-item:nth-of-type(5)');
+        $I->seeLink('Suport clienti','https://altex.ro/suport-clienti/');
+        $I->seeElement('.MainMenu-item:nth-of-type(6)');
+        $I->seeLink('Magazine','https://altex.ro/magazine/');
+        $I->seeElement('.MainMenu-item:nth-of-type(7)');
+        $I->seeLink('Altex Travel','https://www.altextravel.ro/');
+
 
         //Sidemenu homepage
-        $I->seeLink('Promotii', 'https://altex.ro/promo/');
-        $I->seeLink('Branduri', 'https://altex.ro/branduri/');
-        $I->seeLink('Suport clienti', 'https://altex.ro/suport-clienti/');
-        $I->seeLink('Magazine', 'https://altex.ro/magazine/');
-        $I->seeLink('Fundatia Altex', 'https://altex.ro/donatie-impreuna/');
-        $I->seeLink('Finantare', 'https://altex.ro/home/#');
+
+       $I->clickWithLeftButton('.MainMenu-item:nth-of-type(1)');
+       $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu');
+       $I->clickWithLeftButton('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(1)');
+       $I->seeElement('#ProductsMenu-categoriiList-0');
+       $I->clickWithLeftButton('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(2)');
+       $I->seeElement('#ProductsMenu-categoriiList-1');
+       $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(3)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(4)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(5)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(6)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(7)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(8)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(9)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(10)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(11)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(12)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(13)');
+        $I->seeElement('.MainMenu-item:nth-of-type(1) .MainMenu-submenu .ProductsMenu-item:nth-of-type(14)');
     }
 
-    //ofertele zilei
 
-    public function dailyOffersTest(AltexTester $I)
+    public function testingBannerUnderCarousel(AltexTester $I)
     {
+        $I->seeLink('Transport pana la usa ta la orice produs','https://altex.ro/termeni-conditii-livrare/pag/');
+        $I->seeLink('Te-ai razgandit? Poti returna produsul in 14 zile','https://altex.ro/renuntarea-cumparare/pag/');
+        $I->seeLink('Primesti de 2 ori diferenta la orice produs','https://altex.ro/altex-dublul-diferentei-online/pag/');
+        $I->seeLink('Protejeaza-ti investitia cu extragarantie.','https://altex.ro/extragarantie/pag/');
+    }
+
+        //ofertele zilei
+
+  public function testingDailyOffers(AltexTester $I)
+     {
         //$I->scrollTo('#oferte-zilnice');
         $I->wait(2);
-        $I->seeElement('#oferte-zilnice h3');
-        $I->seeElement('#oferte-zilnice img', ['width' => '140'], ['height' => '140']);
-        $I->seeElement('#oferte-zilnice .Price-int');
-        $I->seeElement('#oferte-zilnice h2');
+        $I->seeElement('#oferte-zilnice .leading-32');
+        $I->seeNumberOfElements('#oferte-zilnice .flex-wrap .Products-item','10');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1)');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .font-semibold');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .absolute:nth-of-type(1)');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) img');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) h2');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .text-green');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) span.flex.items-center');
+        $I->seeElement('"#oferte-zilnice .Products-item:nth-of-type(1) .text-base ');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .Price-current ');
     }
 
-    //promotii
+//tab oferte
 
-    public function promotionsTest(AltexTester $I)
-    {
-        $I->wait(2);
-        $I->scrollTo('#promotii');
-        $I->seeElement('#promotii h3');
-        $I->seeElement('#oferte-zilnice img',['width'=>'140'],['height'=>'140']);
-        $I->seeElement('#oferte-zilnice .Price-current');
-        $I->seeElement('#oferte-zilnice h2');
-        $I->seeElement('#promotii .text-black',['text'=>'Vezi mai multe produse']);
-    }
-
-    //oferte
-
-    public function offersTabsTest(AltexTester $I)
+    public function testingOffersTabs(AltexTester $I)
     {
         $I->wait(2);
         $I->scrollTo('#oferte');
-        $I->seeElement('#oferte .Tabs');
-        $I->seeElement('.Tabs-navList .Tabs-navEntry.js-trigger-toggle.is-active');
-        $I->seeElement('.Tabs-trigger.js-trigger');
-        $I->seeElement('#oferte .text-black', ['text' => 'Vezi mai multe produse']);
+        $I->seeElement('#oferte .cursor-pointer:nth-of-type(1)');
+        $I->clickWithLeftButton('#oferte .cursor-pointer:nth-of-type(2)');
+        $I->seeElement('#oferte .cursor-pointer:nth-of-type(2) .Products-item:nth-of-type(1)');
     }
-    //imagini
+//    //promotii
+//
+//    public function promotionsTest(AltexTester $I)
+//    {
+//        $I->wait(2);
+//        $I->scrollTo('#promotii');
+//        $I->seeElement('#promotii h3');
+//        $I->seeElement('#oferte-zilnice img',['width'=>'140'],['height'=>'140']);
+//        $I->seeElement('#oferte-zilnice .Price-current');
+//        $I->seeElement('#oferte-zilnice h2');
+//        $I->seeElement('#promotii .text-black',['text'=>'Vezi mai multe produse']);
+//    }
+//
 
-    public function imagesTest(AltexTester $I)
-    {
-        $I->seeElement('a.block.mr-0.mb-6');
-        $I->seeElement('a.block', ['title' => 'Descopera cele mai noi produse Huawei la cele mai atractive preturi']);
-    }
-
-
+//    //imagini
+//
+//    public function imagesTest(AltexTester $I)
+//    {
+//        $I->seeElement('a.block.mr-0.mb-6');
+//        $I->seeElement('a.block', ['title' => 'Descopera cele mai noi produse Huawei la cele mai atractive preturi']);
+//    }
+//
+//
 }
