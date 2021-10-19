@@ -87,7 +87,7 @@ class HomePageCest
         $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) h2');
         $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .text-green');
         $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) span.flex.items-center');
-        $I->seeElement('"#oferte-zilnice .Products-item:nth-of-type(1) .text-base ');
+        $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .text-base ');
         $I->seeElement('#oferte-zilnice .Products-item:nth-of-type(1) .Price-current ');
     }
 
@@ -111,27 +111,43 @@ class HomePageCest
 
 
     }
-//    //promotii
-//
-//    public function promotionsTest(AltexTester $I)
-//    {
-//        $I->wait(2);
-//        $I->scrollTo('#promotii');
-//        $I->seeElement('#promotii h3');
-//        $I->seeElement('#oferte-zilnice img',['width'=>'140'],['height'=>'140']);
-//        $I->seeElement('#oferte-zilnice .Price-current');
-//        $I->seeElement('#oferte-zilnice h2');
-//        $I->seeElement('#promotii .text-black',['text'=>'Vezi mai multe produse']);
-//    }
-//
+    //promotii
 
-//    //imagini
-//
-//    public function imagesTest(AltexTester $I)
-//    {
-//        $I->seeElement('a.block.mr-0.mb-6');
-//        $I->seeElement('a.block', ['title' => 'Descopera cele mai noi produse Huawei la cele mai atractive preturi']);
-//    }
-//
-//
+    public function testingPromotionsSection(AltexTester $I)
+    {
+        $I->wait(2);
+        $I->scrollTo('#promotii');
+        $I->seeElement('#promotii > h2');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) > a');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .appearance-none:nth-of-type(1)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .appearance-none:nth-of-type(2)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .flex-col img');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .flex-col h2');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .flex-col .text-green');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .flex-col > span');
+        $I->seeElement('#promotii .Products-item:nth-of-type(1) .flex-col > .mt-auto');
+        $I->seeElement('#promotii .Products-item:nth-of-type(2)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(3)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(4)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(5)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(6)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(7)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(8)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(9)');
+        $I->seeElement('#promotii .Products-item:nth-of-type(10)');
+    }
+
+
+    //preFooterSection
+
+    public function testingPreFooterSection(AltexTester $I)
+    {
+        $I->seeElement('.container > .block:nth-of-type(1)');
+        $I->seeElement('.container > .flex-col > a:nth-of-type(1) > img');
+        $I->seeElement('.container > .flex-col > a:nth-of-type(2) > img');
+        $I->seeElement('.rounded.bg-newsletterYellow');
+    }
+
+
 }
