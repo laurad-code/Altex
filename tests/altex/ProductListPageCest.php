@@ -17,38 +17,34 @@ class ProductListPageCest
     public function testThePresenceOfFilters(AltexTester $I)
     {
         $I->seeElement('#catalog-filters-container');
-        $I->seeLink('Promotii','https://altex.ro/laptopuri/cpl/filtru/promotii-3803/promotii/');
-        $I->seeLink('In stoc','https://altex.ro/laptopuri/cpl/filtru/in-stoc-5182/in-stoc/');
-        $I->see('Pret','.Filters-name');
-        $I->see('Brand','.Filters-name');
-        $I->see('Categorie','.Filters-name');
-        $I->see('Sistem operare','.Filters-name');
-        $I->see('Dimensiune ecran (inch)','.Filters-name');
-        $I->see('Rezolutie','.Filters-name');
-        $I->see('Format ecran','.Filters-name');
-        $I->see('Ecran Touch','.Filters-name');
-        $I->see('Producator procesor','.Filters-name');
-        $I->see('Tip procesor','.Filters-name');
-        $I->see('Capacitate RAM (GB)','.Filters-name');
-        $I->see('Tip stocare','.Filters-name');
-        $I->see('Capacitate stocare (GB)','.Filters-name');
-        $I->see('Tip placa video','.Filters-name');
-        $I->see('Procesor grafic','.Filters-name');
-        $I->see('Memorie video','.Filters-name');
-        $I->see('Unitate optica','.Filters-name');
-        $I->see('Tastatura iluminata','.Filters-name');
-        $I->see('Greutate (kg)','.Filters-name');
-        $I->see('Culoare','.Filters-name');
-        $I->seeElement('.Button.Button--block');
+        $I->seeElement("#catalog-filters-container > ul> li:nth-of-type(1) > h3");
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(1)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(1) > .Filters-trigger');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(1) > .Filters-trigger > span:nth-of-type(2)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(1) > .Filters-trigger > span:nth-of-type(2) > span:nth-of-type(2)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(2)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(3)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(4)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(5)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(1) > .mb-8 > li:nth-of-type(6)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > h3');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(1)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(2)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(3)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(4)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(5)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(6)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(2) > .mb-8 > li:nth-of-type(7)');
+        $I->seeElement('#catalog-filters-container > ul> li:nth-of-type(3) > button');
     }
 
     public function testCheckedFilters(AltexTester $I)
     {
-        $I->clickWithLeftButton('.Filters-group:nth-of-type(1) .filter-option:nth-of-type(1) .Filters-trigger.js-trigger-catalog-apply-filters');
+        $I->wait(3);
+        $I->clickWithLeftButton('#catalog-filters-container > ul > li:nth-of-type(1) > .mb-8 > li:nth-of-type(1) > .Filters-trigger');
         $I->wait(2);
-        $I->see('Filtre aplicate','.Filters-name');
-        $I->seeLink('Sterge tot','https://altex.ro/laptopuri/cpl/');
-        $I->seeLink('General: Promotii','https://altex.ro/laptopuri/cpl/');
+        $I->seeElement('ul.flex-wrap .mr-2');
+        $I->seeElement('ul.flex-wrap > li >a.text-red-brand');
     }
 
     public function testThePresenceOfSortingTab(AltexTester $I)
@@ -63,62 +59,43 @@ class ProductListPageCest
 
     public function testTheFunctionalityOfFirstSortingTab(AltexTester $I)
     {
-        $bestSoldFirstProductPrice = $I->grabTextFrom('.Products-item:first-child span.Price-int');
+        $bestSoldFirstProductName = $I->grabTextFrom('.Products-item:nth-of-type(1) .Product-nameHeading');
 
-        $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Pret crescator'));
+        $I->selectOption('.Form-select select', array('text' => 'Pret descrescator'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
-        $I->seeInCurrentUrl('asc');
-
-        $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Pret descrescator'));
-        $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductName, '.Products-item:nth-of-type(1) .Product-nameHeading');
         $I->seeInCurrentUrl('desc');
 
-        $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Nume'));
+        $I->selectOption('.Form-select select', array('text' => 'Pret crescator'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductName, '.Products-item:nth-of-type(1) .Product-nameHeading');
+        $I->seeInCurrentUrl('asc');
+
+        $I->selectOption('.Form-select select', array('text' => 'Nume'));
+        $I->wait(2);
+        $I->dontSee($bestSoldFirstProductName, '.Products-item:nth-of-type(1) .Product-nameHeading');
         $I->seeInCurrentUrl('/name/');
 
-        $I->selectOption('.js-trigger-catalog-toolbar-apply-filters', array('text' => 'Cel mai mare discount'));
+        $I->selectOption('.Form-select select', array('text' => 'Cel mai mare discount'));
         $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice, '.Products-item:first-child span.Price-int');
+        $I->dontSee($bestSoldFirstProductName, '.Products-item:nth-of-type(1) .Product-nameHeading');
         $I->seeInCurrentUrl('/best_deal/');
     }
 
-    public function testTheFunctionalityOfSecondSortingTab(AltexTester $I)
+    public function testTheElementsOfAProduct(AltexTester $I)
     {
 
-        $I->selectOption('.u-space-mr-20:nth-child(2) .js-trigger-catalog-toolbar-apply-filters',array('text'=>'Lista'));
-        $I->seeOptionIsSelected('.u-space-mr-20:nth-child(2) .js-trigger-catalog-toolbar-apply-filters','Lista');
-        $I->waitForElementVisible('main.lg-u-space-pb-20 div.u-clearfix .Products-item .Product-list-center');
+
     }
 
-    public function testTheFunctionalityOfThirdSortingTab(AltexTester $I)
+    public function testLoadMoreProductsButton(AltexTester $I)
     {
-
-        $I->selectOption('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters',array('text'=>'24'));
-        $I->seeOptionIsSelected('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters','24');
-        $I->seeNumberOfElements('.Product','24');
-
-        $I->selectOption('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters',array('text'=>'36'));
+        $I->scrollTo('.text-center button.leading-none');
+        $I->seeNumberOfElements('.Products-item','24');
+        $I->clickWithLeftButton('.text-center button.leading-none');
         $I->wait(2);
-        $I->seeOptionIsSelected('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters','36');
-        $I->seeNumberOfElements('.Product','36');
-
-        $I->selectOption('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters',array('text'=>'48'));
-        $I->seeOptionIsSelected('.u-space-mr-20:last-child .js-trigger-catalog-toolbar-apply-filters','48');
-        $I->seeNumberOfElements('.Product','48');
-    }
-
-    public function testPageSortingTab(AltexTester $I)
-    {
-        $bestSoldFirstProductPrice = $I->grabTextFrom('.Products-item:first-child span.Price-int');
-
-        $I->clickWithLeftButton('.Toolbar-next');
-        $I->wait(2);
-        $I->dontSee($bestSoldFirstProductPrice,'.Products-item:first-child span.Price-int');
-//        $I->seeOptionIsSelected('.u-display-iblock.Toolbar-pager:first-of-type .js-trigger-catalog-toolbar-apply-filters','2 / 18');
+        $I->scrollTo('.text-center button.leading-none');
+        $I->seeNumberOfElements('.Products .Products-item','48');
 
 
     }
